@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span translate>Home</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <ion-card-title>
+        <span>Temperatuur water</span>
+      </ion-card-title>
+      <span *ngIf='temperatuur'>{{ temperatuur.tempWater | number : '.0-3' }} °C</span>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <ion-card-title>
+        <span>Temperatuur zon</span>
+      </ion-card-title>
+      <span *ngIf='temperatuur'>{{ temperatuur.tempZon | number : '.0-3' }} °C</span>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <ion-card-title>
+        <span>Verschil</span>
+      </ion-card-title>
+      <span *ngIf='temperatuur'>{{ temperatuur.tempZon - temperatuur.tempWater | number : '.0-3'}} °C</span>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
