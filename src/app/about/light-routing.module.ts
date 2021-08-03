@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/i18n';
-import { AboutComponent } from './about.component';
+import { LightComponent } from '@app/about/light.component';
 
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts
-  { path: '', component: AboutComponent, data: { title: extract('About') } },
+  { path: '', component: LightComponent, data: { title: extract('Light') } },
 ];
 
 @NgModule({
@@ -14,4 +14,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class AboutRoutingModule {}
+export class LightRoutingModule {}

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(
         map(([credentials, ...rest]) => credentials),
         tap((credentials: firebase.auth.UserCredential) => {
-          this.credentialsService.setCredentials({username: credentials.user.email})
+          this.credentialsService.setCredentials({username: credentials.user.email}, true)
           this.loginForm.markAsPristine();
           this.isLoading = false;
           loadingOverlay.dismiss();
