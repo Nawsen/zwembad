@@ -1,14 +1,30 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { extract } from '@app/i18n';
 import { LoginComponent } from './login.component';
+import { canActivate, isNotAnonymous } from '@angular/fire/auth-guard';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const routes: Routes = [{ path: 'login', component: LoginComponent, data: { title: extract('Login') } }];
+export const redirectLoggedInAndNotAnonTo = (redirect: any[]) =>
+  pipe(
+    isNotAnonymous,
+    map((loggedIn) => !loggedIn || redirect)
+  );
+
+const redirectLoggedInToHome = () =>
+  redirectLoggedInAndNotAnonTo(['/tabs/home']);
+
+const routes: Routes = [{
+  path: 'login',
+  component: LoginComponent,
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [],
+  providers: []
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule {
+}
